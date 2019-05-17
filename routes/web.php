@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::view('orders', 'orders.index');
 Route::view('orders/1', 'orders.show');
+Route::view('orders/create', 'orders.create');

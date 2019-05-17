@@ -6,7 +6,7 @@
 <section class="text-center my-5">
 
     <!-- Section heading -->
-    <h2 class="h1-responsive font-weight-bold my-5">Latest orders</h2>
+    <h2 class="h1-responsive font-weight-bold my-5">Your orders</h2>
 
     <!-- Grid row -->
     <div class="row">
