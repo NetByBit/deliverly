@@ -11,13 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+/*
+/login
+/register
+*/
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::view('/', 'welcome');
+Route::view('/driver-register', 'auth.driver-register');
+
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::view('orders', 'orders.index');
 Route::view('orders/1', 'orders.show');

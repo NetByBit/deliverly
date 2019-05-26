@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{ config('app.name') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -83,13 +83,13 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
             <div class="content">
                 <div class="title m-b-md" id="main-title">
-                    
+
                 </div>
             </div>
         </div>
         <script>
             var typed = new Typed('#main-title', {
-                strings: ["", "Deliverly", "Shipment made easy"],
+                strings: ["", "{{ config('app.name') }}", "Shipment made easy"],
                 typeSpeed: 60,
                 loop: true
             });
