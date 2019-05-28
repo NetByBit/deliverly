@@ -6,7 +6,30 @@
 <section class="text-center my-5">
 
     <!-- Section heading -->
-    <h2 class="h1-responsive font-weight-bold my-5">Your orders</h2>
+    <h2 class="h1-responsive font-weight-bold my-5">Available orders</h2>
+
+    <div class="row">
+        <div class="col-md mt-3">
+            <select class="browser-default custom-select mb-4">
+                <option value="" selected disabled>From</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Giza">Giza</option>
+                <option value="Alexandria">Alexandria</option>
+            </select>
+        </div>
+        <div class="col-md mt-3">
+            <select class="browser-default custom-select mb-4">
+                <option value="" selected disabled>To</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Giza">Giza</option>
+                <option value="Alexandria">Alexandria</option>
+            </select>
+        </div>
+        <div class="col-md-2 mt-3">
+            <button class="btn btn-primary">Search</button>
+        </div>
+    </div>
+
     <!-- Grid row -->
     <div class="row">
 
@@ -86,11 +109,5 @@
 
   </section>
   <!-- Section: Blog v.2 -->
-</div>
-
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating green" href="/orders/create">
-        <i class="fas fa-plus"></i>
-    </a>
 </div>
 @endsection
