@@ -3,89 +3,34 @@
 @section('content')
 <div class="container">
 <!-- Section: Blog v.2 -->
-<section class="text-center my-5">
+    <section class="text-center my-5">
 
-    <!-- Section heading -->
-    <h2 class="h1-responsive font-weight-bold my-5">Your orders</h2>
-    <!-- Grid row -->
-    <div class="row">
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold my-5">{{ auth()->user()->isDriver()? 'Available orders': 'Your orders'}}</h2>
 
-      <!-- Grid column -->
-      <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+        @foreach ($orders->chunk(3) as $ordersRow)
+            <div class="row mb-3">
+                @foreach ($ordersRow as $order)
+                    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
 
-        <!-- Featured image -->
-        <div class="view overlay rounded z-depth-3 mb-4">
-          <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/81.jpg" alt="Sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
+                        <div class="view overlay rounded z-depth-3 mb-4">
+                        <img class="img-fluid" src="{{ $order->image }}">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                        </div>
+                        <h4 class="font-weight-bold mb-3"><strong>{{ $order->name }}</strong></h4>
+                        <p>by <a class="font-weight-bold">{{ $order->user->name }}</a>, {{ $order->created_at->diffForhumans() }}</p>
+                        <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
+                        quo minus id quod maxime placeat facere possimus voluptas.</p>
+                        <a class="btn btn-pink btn-rounded btn-md">View</a>
+                    </div>
+                @endforeach
+            </div>
+        @endforeach
 
-        <!-- Post title -->
-        <h4 class="font-weight-bold mb-3"><strong>Iphone 8</strong></h4>
-        <!-- Post data -->
-        <p>by <a class="font-weight-bold">Billy Forester</a>, 15/07/2018</p>
-        <!-- Excerpt -->
-        <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-          quo minus id quod maxime placeat facere possimus voluptas.</p>
-        <!-- Read more button -->
-        <a class="btn btn-pink btn-rounded btn-md">View</a>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
-
-        <!-- Featured image -->
-        <div class="view overlay rounded z-depth-3 mb-4">
-          <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-
-        <!-- Post title -->
-        <h4 class="font-weight-bold mb-3"><strong>Xbox</strong></h4>
-        <!-- Post data -->
-        <p>by <a class="font-weight-bold">Billy Forester</a>, 13/07/2018</p>
-        <!-- Excerpt -->
-        <p class="dark-grey-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-          voluptatum deleniti atque corrupti quos dolores.</p>
-        <!-- Read more button -->
-        <a class="btn btn-deep-orange btn-rounded btn-md">View</a>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-lg-4 col-md-6 mb-0">
-
-        <!-- Featured image -->
-        <div class="view overlay rounded z-depth-3 mb-4">
-          <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/13.jpg" alt="Sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-        <!-- Post title -->
-        <h4 class="font-weight-bold mb-3"><strong>Chair</strong></h4>
-        <!-- Post data -->
-        <p>by <a class="font-weight-bold">Billy Forester</a>, 11/07/2018</p>
-        <!-- Excerpt -->
-        <p class="dark-grey-text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-          quia consequuntur magni dolores eos qui ratione.</p>
-        <!-- Read more button -->
-        <a class="btn btn-info btn-rounded btn-md">View</a>
-
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
-
-  </section>
-  <!-- Section: Blog v.2 -->
+        {{ $orders->links()}}
+    </section>
 </div>
 
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">

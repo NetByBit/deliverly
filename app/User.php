@@ -36,4 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isDriver()
+    {
+        return $this->type === 'driver';
+    }
+
+    public function orders()
+    {
+        return $this->isDriver() ? $this->hasMany(Order::class, 'driver_id'): $this->hasMany(Order::class);
+    }
+
 }
