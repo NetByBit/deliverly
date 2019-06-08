@@ -4,12 +4,13 @@
 <div class="container">
     <div class="row mb-5">
         <div class="col-md-4">
-        <div class="view overlay rounded z-depth-3">
-            <img class="img-fluid" src="{{ $order->image }}" alt="Sample image">
-            <a>
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
+            <div class="view overlay rounded z-depth-3">
+                <img class="img-fluid" src="{{ $order->image }}" alt="Sample image">
+                <a>
+                <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <button class="btn btn-info btn-lg  btn-block mx-auto mt-5">Accept order</button>
         </div>
         <div class="col-md-8">
             <h2 class="h1-responsive font-weight-bold mb-5">{{ $order->title }}
@@ -25,7 +26,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <strong>Weight:</strong> {{ $order->weight }} gm
+                    <strong>Weight:</strong> {{ $order->weight /1000 }} kg
                 </div>
                 <div class="col">
                     <strong>Price:</strong> {{ $order->price }} EGP

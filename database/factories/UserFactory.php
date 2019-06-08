@@ -23,6 +23,7 @@ $factory->state(App\User::class, 'driver', function ($faker) {
     return [
         'type' => 'driver',
         'car_type' => $faker->vehicle,
-        'max_weight' => $faker->numberBetween(5000, 20000)
+        'max_weight' => $faker->numberBetween(5000, 20000),
+        'car_number' => $faker->vehicleRegistration,
     ];
 });

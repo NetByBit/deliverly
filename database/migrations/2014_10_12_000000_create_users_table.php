@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('image');
             $table->string('type');
             $table->string('car_type')->nullable();
+            $table->string('car_number')->nullable();
             $table->string('max_weight')->nullable();
             $table->rememberToken();
             $table->timestamps();

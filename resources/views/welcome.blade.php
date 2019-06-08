@@ -73,7 +73,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
                 @auth
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ url('/orders') }}">Orders</a>
                 @else
                     <a href="{{ route('login') }}">Login</a>
 
