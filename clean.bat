@@ -1,4 +1,4 @@
-timeout /t 10 /nobreak
+timeout /t 300 /nobreak
 
 git clean -fdx
 
