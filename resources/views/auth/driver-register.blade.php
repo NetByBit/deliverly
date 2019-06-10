@@ -61,16 +61,43 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Car type</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Vehicle type</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <select class="browser-default custom-select mb-4">
+                                        <option value="" selected disabled>Car type</option>
+                                        <option value="car">Car</option>
+                                        <option value="Bike">Bike</option>
+                                        <option value="Motorcycle">Motorcycle</option>
+                                        <option value="Truck">Truck</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                            </div>
+                        </div>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">From</label>
+
+                            <div class="col-md-6">
+                                    <select class="browser-default custom-select mb-4">
+                                        <option value="" selected>From</option>
+                                        @foreach (getGovernorates() as $governorate)
+                                            <option value="{{ $governorate }}">{{ $governorate }}</option>
+                                        @endforeach
+                                    </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">to</label>
+
+                            <div class="col-md-6">
+                                    <select class="browser-default custom-select mb-4">
+                                        <option value="" selected>to</option>
+                                        @foreach (getGovernorates() as $governorate)
+                                            <option value="{{ $governorate }}">{{ $governorate }}</option>
+                                        @endforeach
+                                    </select>
                             </div>
                         </div>
 

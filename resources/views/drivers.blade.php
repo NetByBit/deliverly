@@ -10,18 +10,18 @@
                 <div class="row">
                     <div class="col-md mt-3">
                         <select class="browser-default custom-select mb-4">
-                            <option value="" selected disabled>From</option>
-                            <option value="Cairo">Cairo</option>
-                            <option value="Giza">Giza</option>
-                            <option value="Alexandria">Alexandria</option>
+                            <option value="" selected>From</option>
+                            @foreach (getGovernorates() as $governorate)
+                                <option value="{{ $governorate }}">{{ $governorate }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-md mt-3">
                         <select class="browser-default custom-select mb-4">
-                            <option value="" selected disabled>To</option>
-                            <option value="Cairo">Cairo</option>
-                            <option value="Giza">Giza</option>
-                            <option value="Alexandria">Alexandria</option>
+                            <option value="" selected>To</option>
+                            @foreach (getGovernorates() as $governorate)
+                                <option value="{{ $governorate }}">{{ $governorate }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-md-2 mt-3">
