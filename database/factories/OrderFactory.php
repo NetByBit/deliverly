@@ -6,14 +6,14 @@ use App\Order;
 use Faker\Generator as Faker;
 
 $factory->define(Order::class, function (Faker $faker) {
-    $weight = $faker->numberBetween(100, 20000);
     return [
         'title' => $faker->catchPhrase,
-        'image' => $faker->imageUrl(800, 600),
+        'image' => 'https://dummyimage.com/400x255/ff7f7f/333333.png&text=Temporary Image',
         'description' => $faker->text(600),
         'from' => $faker->address,
         'to' => $faker->address,
-        'weight' => $weight,
-        'price' => $weight * (20 / 1000) + 20,
+        'from_city' => $faker->state,
+        'to_city' => $faker->state,
+        'weight' => $faker->numberBetween(100, 20000),
     ];
 });

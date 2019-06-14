@@ -18,10 +18,12 @@ class CreateOrdersTable extends Migration
             $table->string('title');
             $table->string('image');
             $table->text('description');
+            $table->string('from_city');
+            $table->string('to_city');
             $table->string('from');
             $table->string('to');
             $table->integer('weight');
-            $table->integer('price');
+            $table->integer('cost');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('driver_id')->nullable();
             $table->timestamps();

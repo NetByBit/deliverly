@@ -33,9 +33,12 @@
     </section>
 </div>
 
+@if (!auth()->user()->isDriver())
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating green" href="/orders/create">
         <i class="fas fa-plus"></i>
     </a>
 </div>
+@endif
+
 @endsection

@@ -19,7 +19,9 @@ use App\User;
 Auth::routes();
 
 Route::view('/', 'welcome');
-Route::view('/driver-register', 'auth.driver-register');
+Route::view('/driver-register', 'auth.driver-register')
+    ->name('driver-register')
+    ->middleware('guest');
 
 Route::resource('orders', 'OrderController')->middleware('auth');
 // Route::view('orders/driver', 'orders.driver')->middleware('auth');
