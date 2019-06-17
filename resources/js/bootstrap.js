@@ -1,3 +1,4 @@
+
 window._ = require('lodash');
 
 /**
@@ -11,7 +12,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    // require('mdbootstrap/js/mdb')
+    require('mdbootstrap/js/mdb')
 } catch (e) {}
 
 /**

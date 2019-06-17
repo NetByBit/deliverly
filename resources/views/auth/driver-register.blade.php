@@ -8,8 +8,9 @@
                 <div class="card-header">Driver Register</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="type" value="driver">
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
@@ -38,7 +39,21 @@
                                 @enderror
                             </div>
                         </div>
+                       
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Image</label>
 
+                            <div class="col-md-6">
+                                <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="exampleFormControlFile1" name="image">
+
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+    
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
@@ -61,53 +76,27 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Vehicle type</label>
+                            <label for="car_type" class="col-md-4 col-form-label text-md-right">Vehicle type</label>
 
                             <div class="col-md-6">
-                                    <select class="browser-default custom-select mb-4">
-                                        <option value="" selected disabled>Car type</option>
-                                        <option value="car">Car</option>
-                                        <option value="Bike">Bike</option>
-                                        <option value="Motorcycle">Motorcycle</option>
-                                        <option value="Truck">Truck</option>
-                                        <option value="Other">Other</option>
-                                    </select>
+                                <select id="car_type" class="browser-default custom-select mb-4" name="car_type">
+                                    <option value="" selected disabled>Car type</option>
+                                    <option value="car">Car</option>
+                                    <option value="Bike">Bike</option>
+                                    <option value="Motorcycle">Motorcycle</option>
+                                    <option value="Truck">Truck</option>
+                                    <option value="Other">Other</option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">From</label>
+                            <label for="max_weight" class="col-md-4 col-form-label text-md-right">Max weight (in grams)</label>
 
                             <div class="col-md-6">
-                                    <select class="browser-default custom-select mb-4">
-                                        <option value="" selected>From</option>
-                                        @foreach (getGovernorates() as $governorate)
-                                            <option value="{{ $governorate }}">{{ $governorate }}</option>
-                                        @endforeach
-                                    </select>
-                            </div>
-                        </div>
+                                <input id="max_weight" type="text" class="form-control @error('max_weight') is-invalid @enderror" name="max_weight" value="{{ old('max_weight') }}" required autocomplete="name" autofocus>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">to</label>
-
-                            <div class="col-md-6">
-                                    <select class="browser-default custom-select mb-4">
-                                        <option value="" selected>to</option>
-                                        @foreach (getGovernorates() as $governorate)
-                                            <option value="{{ $governorate }}">{{ $governorate }}</option>
-                                        @endforeach
-                                    </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Max weight</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
+                                @error('max_weight')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

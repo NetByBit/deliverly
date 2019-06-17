@@ -11,12 +11,10 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    <script src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.8.1.min.css?ver=4.8.1"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -38,9 +36,6 @@
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="/orders">Orders</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/drivers">Drivers</a>
                             </li>
                         @endauth
                     </ul>

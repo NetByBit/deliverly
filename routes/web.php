@@ -19,19 +19,16 @@ use App\User;
 Auth::routes();
 
 Route::view('/', 'welcome');
+
 Route::view('/driver-register', 'auth.driver-register')
     ->name('driver-register')
     ->middleware('guest');
 
 Route::resource('orders', 'OrderController')->middleware('auth');
-// Route::view('orders/driver', 'orders.driver')->middleware('auth');
 
-Route::get('drivers', function() {
-    $users = User::where('type', 'driver')->get();
-
-    return view('drivers', compact('users'));
-});
-
+Route::post('orders/{order}/accept', 'OrderController@accept');
+Route::post('orders/{order}/comment', 'OrderController@comment');
+Route::post('orders/{order}/delivered', 'OrderController@delivered');
 
 Route::get('profile/{user}', function(User $user) {
     return view('profile', compact('user'));

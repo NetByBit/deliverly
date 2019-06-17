@@ -21,8 +21,16 @@
                         </div>
                         <h4 class="font-weight-bold mb-3"><strong>{{ $order->name }}</strong></h4>
                         <p>by <a class="font-weight-bold">{{ $order->user->name }}</a>, {{ $order->created_at->diffForhumans() }}</p>
-                        <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-                        quo minus id quod maxime placeat facere possimus voluptas.</p>
+                        <p class="dark-grey-text">
+                            <div class="row">
+                                <div class="col">
+                                    <b>From: </b> {{ $order->from_city }}
+                                </div>
+                                <div class="col">
+                                    <b>To: </b> {{ $order->to_city }}
+                                </div>
+                            </div>
+                        </p>
                         <a class="btn btn-pink btn-rounded btn-md text-white" href="/orders/{{ $order->id }}" >View</a>
                     </div>
                 @endforeach

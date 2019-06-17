@@ -2,21 +2,29 @@
 
 @section('content')
 <div class="container">
-<!-- Default form register -->
-<form class="text-center border border-light p-5">
 
+@if ($errors->any())
+    <div class="alert alert-danger mt-2">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form class="text-center border border-light p-5" method="POST" enctype="multipart/form-data" action="/orders">
+    @csrf
     <p class="h2 mb-4">Create order</p>
 
-    <div class="md-form mt-3">
-        <input type="text" id="materialContactFormName" class="form-control">
-        <label for="materialContactFormName">My order</label>
+    <div class="mt-3">
+        <input type="text" placeholder="My order" name="title" class="form-control">
     </div>
 
     <h4 class="mt-3">From</h4>
 
     <div class="row">
         <div class="col mt-3">
-            <select class="browser-default custom-select mb-4">
+            <select class="browser-default custom-select mb-4" name="from_city">
                 <option value="" selected>City</option>
                 @foreach (getGovernorates() as $governorate)
                 <option value="{{ $governorate }}">{{ $governorate }}</option>
@@ -24,10 +32,7 @@
             </select>
         </div>
         <div class="col mt-3">
-            <div class="md-form mt-3">
-                <input type="text" id="fromAddress" class="form-control">
-                <label for="fromAddress">Address</label>
-            </div>
+            <input type="text" placeholder="Address" class="form-control" name="from">
         </div>
     </div>
 
@@ -35,7 +40,7 @@
 
     <div class="row">
         <div class="col mt-3">
-            <select class="browser-default custom-select mb-4">
+            <select class="browser-default custom-select mb-4" name="to_city">
                 <option value="" selected>City</option>
                 @foreach (getGovernorates() as $governorate)
                 <option value="{{ $governorate }}">{{ $governorate }}</option>
@@ -43,39 +48,23 @@
             </select>
         </div>
         <div class="col mt-3">
-            <div class="md-form mt-3">
-                <input type="text" id="toAddress" class="form-control">
-                <label for="toAddress">Address</label>
-            </div>
+            <input type="text" placeholder="Address" class="form-control" name="to">
         </div>
     </div>
 
 
     <h4 class="mt-3">Properties</h4>
-    <div class="md-form mt-3">
-        <input type="text" id="materialContactFormWeight" class="form-control">
-        <label for="materialContactFormWeight">Weight</label>
+    <div class="mt-3">
+        <input type="text" placeholder="Weight" class="form-control" name="weight">
     </div>
 
-    <div class="md-form mt-3">
-        <input type="text" id="materialContactFormSize" class="form-control">
-        <label for="materialContactFormSize">Size (optional)</label>
-    </div>
-
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Image</span>
-        </div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile01"
-            aria-describedby="inputGroupFileAddon01">
-            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-        </div>
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input type="file" class="form-control-file" id="image" name="image">
     </div>
     <!--Message-->
-    <div class="md-form mt-3">
-        <textarea id="materialContactFormMessage" class="form-control md-textarea" rows="3"></textarea>
-        <label for="materialContactFormMessage">Notes</label>
+    <div class="mt-3">
+        <textarea placeholder="Type any notes" class="form-control md-textarea" name="description" rows="3"></textarea>
     </div>
 
     <!-- Sign up button -->

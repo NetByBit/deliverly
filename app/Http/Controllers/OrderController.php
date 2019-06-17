@@ -7,80 +7,77 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $orders = auth()->user()->orders()->with('user')->paginate(12);
+        $orders = auth()->user()->orders()->latest()->with('user')->paginate(12);
         return view('orders.index', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('orders.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:50',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'from_city' => 'required|string',
+            'from' => 'required|string',
+            'to_city' => 'required|string',
+            'to' => 'required|string',
+            'weight' => 'required',
+            'description' => 'required|string',
+        ]);
+
+        if (array_key_exists('image', $validatedData)) {
+            $validatedData['image'] = '/storage/' . $validatedData['image']->store('images', 'public');
+        }
+
+        auth()->user()->orders()->create($validatedData);
+        return redirect('/orders');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function show(Order $order)
     {
         return view('orders.show', compact('order'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
+    public function accept(Order $order)
     {
-        //
+        $order->update([
+            'driver_id' => auth()->id()
+        ]);
+
+        $order->statuses()->create([
+            'body' => 'Your order has been accepted'
+        ]);
+
+        return back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
+    public function comment(Request $request, Order $order)
     {
-        //
+        $validatedData = $request->validate([
+            'body' => 'required',
+        ]);
+
+        $order->statuses()->create($validatedData);
+
+        return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
+    public function delivered(Order $order)
     {
-        //
+        $order->update([
+            'delivered' => true,
+        ]);
+
+        $order->statuses()->create([
+            'body' => 'Your order has been delivered'
+        ]);
+
+        return back();
     }
 }

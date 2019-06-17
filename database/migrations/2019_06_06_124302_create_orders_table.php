@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('image');
+            $table->boolean('delivered')->default(0);
             $table->text('description');
             $table->string('from_city');
             $table->string('to_city');

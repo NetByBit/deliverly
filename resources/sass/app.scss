@@ -1,4 +1,13 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+// @import '~mdbootstrap/css/mdb.css';
 @import 'mdb/css/mdb.css';
 
+.navbar .btn-link {
+    color: #fff !important;
+}
+
+// .md-form label.active {
+//     font-size: 0.8rem !important;
+//     transform: translateY(-140%) !important;
+// }
