@@ -52,24 +52,24 @@
         </div>
     </div>
 
-
     <h4 class="mt-3">Properties</h4>
     <div class="mt-3">
         <input type="text" placeholder="Weight" class="form-control" name="weight">
     </div>
 
-    <div class="form-group">
-        <label for="image">Image</label>
-        <input type="file" class="form-control-file" id="image" name="image">
-    </div>
-    <!--Message-->
     <div class="mt-3">
+        <input type="text" placeholder="Distance" class="form-control" name="distance">
+    </div>
+
+    <div class="form-group row mt-4">
+        <label for="image" class="col-md-3 text-left">Image</label>
+        <input type="file" class="form-control-file col-md-9" id="image" name="image">
+    </div>
+    <div class="mt-4">
         <textarea placeholder="Type any notes" class="form-control md-textarea" name="description" rows="3"></textarea>
     </div>
 
-    <!-- Sign up button -->
     <button class="btn btn-primary my-4 btn-block" type="submit">Create</button>
 
-<!-- Default form register -->
 </div>
 @endsection

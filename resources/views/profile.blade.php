@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    {{-- justify-content-centers --}}
     <div class="row">
         <div class="col-md-4">
             <img src="{{ $user->image }}" class="img-fluid">
@@ -13,15 +12,17 @@
             </h2>
 
             <div>
-                <p>
-                    Car type: {{ $user->car_type }}
-                </p>
-                <p>
-                    Car number: {{ $user->car_number }}
-                </p>
-                <p>
-                    Max weight: {{ $user->max_weight / 1000 }} kg
-                </p>
+                @if ($user->isDriver())
+                    <p>
+                        Car type: {{ $user->car_type }}
+                    </p>
+                    <p>
+                        Car number: {{ $user->car_number }}
+                    </p>
+                    <p>
+                        Max weight: {{ $user->max_weight / 1000 }} kg
+                    </p>
+                @endif
                 <p>
                     Orders taken: {{ $user->orders()->count() }} order
                 </p>

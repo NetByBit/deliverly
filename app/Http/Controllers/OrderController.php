@@ -28,6 +28,7 @@ class OrderController extends Controller
             'to_city' => 'required|string',
             'to' => 'required|string',
             'weight' => 'required',
+            'distance' => 'required',
             'description' => 'required|string',
         ]);
 

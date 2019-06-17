@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('from');
             $table->string('to');
             $table->integer('weight');
-            $table->integer('cost');
+            $table->integer('distance');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('driver_id')->nullable();
             $table->timestamps();

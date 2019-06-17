@@ -60,6 +60,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="/profile/{{ auth()->id() }}" class="dropdown-item">
+                                        Profile
+                                    </a>
                                     <a class="dropdown-item" href="/logout"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

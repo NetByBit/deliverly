@@ -13,10 +13,9 @@ class Order extends Model
         'delivered' => 'boolean'
     ];
 
-    public function setWeightAttribute($value)
+    public function getCostAttribute($value)
     {
-        $this->attributes['weight'] = $value;
-        $this->attributes['cost'] = $value * (20 / 1000) + 20;
+        return ($this->weight * (1 / 1000)) + ($this->distance * 1) + 50;
     }
 
     public function user()
@@ -39,6 +38,8 @@ class Order extends Model
             return 'delivering';
         }
     }
+
+
 
     public function statuses()
     {
